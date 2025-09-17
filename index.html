@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI</title>
+    <link rel="stylesheet" href = "style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+
+<body>
+    <div class="sidebar">
+  <a href="#home" class="active">Chat</a>
+  <a href="#news">Models</a>
+  <a href="#contact">History</a>
+  <a href="#about">About</a>
+</div>
+    <header>
+        <h1><span>GENAI</span></h1>
+    </header>
+    <section class="chatbot">
+        <div class="chat">
+        <p id="textToUser">
+            <bot style="font-weight: bold;"></bot>
+        </p>
+        </div>
+        <search>
+            <input type="text" id="userInput" placeholder="write your question">
+            <button onclick="callGemini()" type="submit">send</button>
+        </search>
+    </section>
+    <script>
+        const API_KEY = import.meta.env.GEMINI_API_KEY;
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+
+        async function callGemini() {
+            const prompt = document.getElementById('userInput').value;
+
+            const body = {
+                contents: [{
+                    parts: [{ text: prompt }]
+                }]
+            };
+
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await res.json();
+                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response.';
+                document.getElementById('textToUser').textContent = reply;
+            } catch (err) {
+                console.error(err);
+                document.getElementById('textToUser').textContent = 'Error';
+            }
+            
+
+        }
+        
+    </script>
+</body>
+
+</html>

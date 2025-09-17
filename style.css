@@ -1,0 +1,132 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(8, 12, 55) );
+}
+
+header h1 {
+    float: right;
+    margin-right: 50px;
+    padding-top: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+span {
+    color: rgb(6, 201, 255);
+}
+
+.chatbot {
+    font-size: larger;
+    width: 80%;
+    padding: 20px 70px;
+    line-height: 30px;
+}
+
+search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+}
+
+#userInput {
+    display: flex;
+    align-items: end;
+    background: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    height: 34px;
+    font-size: 20px;
+    color: white;
+}
+
+button {
+    background-image: linear-gradient(to left, rgb(24, 1, 128), blue);
+    color: white;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #006de1;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #505371;
+  color: white;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+
+.sidebar a.active {
+  background-color: #000000;
+  color: white;
+  
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #000000;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+div.scroll-container {
+  background-color: #33333300;
+  
+  overflow: auto;
+  white-space: nowrap;
+  width: 20%;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+}
